@@ -21,21 +21,11 @@
     <script type="text/javascript" src="../js/babel.min.js"></script>
 
     <script type="text/babel">
-      // 1.创建类式组件
       class Weather extends React.Component {
-        // 构造器调用几次？ —— 1次
-        constructor(props) {
-          super(props);
-          //初始化状态
-          this.state = { isHot: true };
+        // 初始化状态
+        state = { isHot: true };
 
-          // 解决changeWeathr中this的指向问题
-          this.changeWeather = this.changeWeather.bind(this);
-        }
-
-        // render调用几次？ —— 1 + n次
         render() {
-          //读取状态
           const { isHot } = this.state;
           return (
             <h1 onClick={this.changeWeather}>
@@ -44,19 +34,12 @@
           );
         }
 
-        // changeWeather调用几次？ —— 按几次调用几次
-        changeWeather() {
-          //为什么这个this还是undefined？
-          // console.log(this);
-
-          // 获取原来的ishot
+        // 自定义方法
+        // 箭头函数没有this，找的外侧函数的this
+        changeWeather = () => {
           const isHot = this.state.isHot;
-
-          // 状态不可直接更改🙅，要借助内置API
-          // this.state.isHot = !isHot; // 错误写法
-
           this.setState({ isHot: !isHot });
-        }
+        };
       }
 
       // 2.渲染组件到页面
