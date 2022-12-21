@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>类式组件</title>
+  </head>
+  <body>
+    <!-- Prepare a "container" -->
+    <div id="test"></div>
+    <div id="test2"></div>
+    <div id="test3"></div>
+
+    <!-- import react core -->
+    <script type="text/javascript" src="../js/react.development.js"></script>
+    <!-- import react-dom, for supporting react to manipulate Dom -->
+    <script
+      type="text/javascript"
+      src="../js/react-dom.development.js"
+    ></script>
+    <script type="text/javascript" src="../js/prop-types.js"></script>
+    <!-- import balel transfer jsx to js -->
+    <script type="text/javascript" src="../js/babel.min.js"></script>
+
+    <script type="text/babel">
+      // 1.创建类式组件
+      class Person extends React.Component {
+        // propTypes = {
+        //   name: PropTypes.string,
+        // };
+        render() {
+          return (
+            <ul>
+              <li>姓名：{this.props.name}</li>
+              <li>性别：{this.props.age + 1}</li>
+              <li>年龄：{this.props.gender}</li>
+            </ul>
+          );
+        }
+      }
+
+      Person.propTypes = {
+        name: PropTypes.string.isRequired,
+        gender: PropTypes.string,
+        age: PropTypes.number,
+        speak: PropTypes.func,
+      };
+
+      Person.defaultProps = {
+        gender: "不男不女",
+        age: 8848,
+      };
+      const p = { name: "peter", age: 8848, gender: "zhiyin" };
+      // 2.渲染组件到页面
+      const speak = function () {
+        console.log("hello");
+      };
+      ReactDOM.render(
+        <Person name="jerry" age={18} gender="女性" speak={1} />,
+        document.getElementById("test")
+      );
+      ReactDOM.render(
+        <Person name="jack" age={10} gender="男性" />,
+        document.getElementById("test2")
+      );
+      ReactDOM.render(<Person {...p} />, document.getElementById("test3"));
+    </script>
+  </body>
+</html>
