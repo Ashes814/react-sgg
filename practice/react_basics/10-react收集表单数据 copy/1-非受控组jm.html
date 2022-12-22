@@ -24,42 +24,37 @@
     <script type="text/javascript" src="../js/babel.min.js"></script>
 
     <script type="text/babel">
-      class Demo extends React.Component {
-        myRef = React.createRef();
-        myRef2 = React.createRef();
-        showData = () => {
-          const { input1 } = this;
-          alert(this.myRef.current.value);
+      class Login extends React.Component {
+        handleSubmit = (event) => {
+          event.preventDefault();
+          const { username, password } = this;
+          alert(
+            `you username is ${username.value}, password is ${password.value}`
+          );
         };
 
-        showData2 = (event) => {
-          //   const { input2 } = this;
-          alert(event.target.value);
-        };
         render() {
           return (
-            <div>
+            <form action="#" onSubmit={this.handleSubmit}>
+              username:{" "}
               <input
-                ref={this.myRef}
+                ref={(c) => (this.username = c)}
                 type="text"
-                placeholder="push button show data"
+                name="username"
               />
-              &nbsp;
-              <button ref="button1" onClick={this.showData}>
-                点我提示左侧的数据
-              </button>
-              &nbsp;
+              password:{" "}
               <input
-                onBlur={this.showData2}
-                type="text"
-                placeholder="lose focus show data"
+                ref={(c) => (this.password = c)}
+                type="password"
+                name="password"
               />
-            </div>
+              <button>Log in</button>
+            </form>
           );
         }
       }
 
-      ReactDOM.render(<Demo />, document.getElementById("test"));
+      ReactDOM.render(<Login />, document.getElementById("test"));
     </script>
   </body>
 </html>
