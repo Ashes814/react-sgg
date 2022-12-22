@@ -21,41 +21,63 @@
     <script type="text/javascript" src="js/babel.min.js"></script>
 
     <script type="text/babel">
-      class Life extends React.Component {
-        state = {
-          opacity: 1,
-        };
-        death = () => {
-          ReactDOM.unmountComponentAtNode(document.getElementById("test"));
-        };
-
-        //
+      class Count extends React.Component {
+        constructor(props) {
+          console.log("count---constructor");
+          super(props);
+          this.state = { count: 0 };
+        }
+        //组件将要挂载
+        componentWillMount() {
+          console.log("count---componentWillMount");
+        }
+        //组件挂载完毕
         componentDidMount() {
-          this.timer = setInterval(() => {
-            let { opacity } = this.state;
-            opacity -= 0.01;
-            if (opacity <= 0) opacity = 1;
-            this.setState({ opacity });
-          }, 20);
+          console.log("count---componentDidMount");
         }
 
+        //组件将要卸载的钩子
         componentWillUnmount() {
-          clearInterval(this.timer);
+          console.log("count---componentWillUnmount");
+        }
+
+        // 控制组件更新的阀门
+        shouldComponentUpdate() {
+          console.log("count---shouldComponentUpdate");
+          return true;
+        }
+
+        // 组件将要更新的钩子
+        componentWillUpdate() {
+          console.log("count---componentWillUpdate");
+        }
+
+        // 组件更新完毕的钩子
+        componentDidUpdate() {
+          console.log("count---componentDidUpdate");
         }
 
         render() {
+          console.log("count---render");
           return (
             <div>
-              <h2 style={{ opacity: this.state.opacity }}>
-                why learning react hard
-              </h2>
+              <h2>sum:{this.state.count}</h2>
+              <button onClick={this.add}>+1</button>
               <button onClick={this.death}>go die</button>
             </div>
           );
         }
-      }
 
-      ReactDOM.render(<Life />, document.getElementById("test"));
+        death = () => {
+          ReactDOM.unmountComponentAtNode(document.getElementById("test"));
+        };
+
+        add = () => {
+          let { count } = this.state;
+          this.setState({ count: count + 1 });
+        };
+      }
+      ReactDOM.render(<Count />, document.getElementById("test"));
     </script>
   </body>
 </html>
