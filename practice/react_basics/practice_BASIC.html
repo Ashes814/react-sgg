@@ -5,6 +5,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>react</title>
+    <style>
+      .list {
+        height: 150px;
+        width: 300px;
+        background-color: deepskyblue;
+        overflow: auto;
+      }
+
+      .news {
+        height: 30px;
+      }
+    </style>
   </head>
   <body>
     <!-- Prepare a "container" -->
@@ -24,97 +36,40 @@
     <script type="text/javascript" src="newjs/babel.min.js"></script>
 
     <script type="text/babel">
-      class Count extends React.Component {
-        constructor(props) {
-          console.log("count---constructor");
-          super(props);
-          this.state = { count: 0 };
-        }
-        //组件将要挂载
-        componentWillMount() {
-          console.log("count---componentWillMount");
-        }
-        //组件挂载完毕
-        componentDidMount() {
-          console.log("count---componentDidMount");
-        }
-
-        //组件将要卸载的钩子
-        componentWillUnmount() {
-          console.log("count---componentWillUnmount");
-        }
-
-        // 控制组件更新的阀门
-        shouldComponentUpdate() {
-          console.log("count---shouldComponentUpdate");
-          return true;
-        }
-
-        // 组件将要更新的钩子
-        componentWillUpdate() {
-          console.log("count---componentWillUpdate");
-        }
-
-        // 组件更新完毕的钩子
-        componentDidUpdate() {
-          console.log("count---componentDidUpdate");
-        }
-
-        render() {
-          console.log("count---render");
-          return (
-            <div>
-              <h2>sum:{this.state.count}</h2>
-              <button onClick={this.add}>+1</button>
-              <button onClick={this.death}>go die</button>
-              <button onClick={this.force}>FORCE update</button>
-            </div>
-          );
-        }
-
-        death = () => {
-          ReactDOM.unmountComponentAtNode(document.getElementById("test"));
-        };
-
-        force = () => {
-          this.forceUpdate();
+      class Person extends React.Component {
+        state = {
+          persons: [
+            { id: 1, name: "zzz", age: 23 },
+            { id: 2, name: "lll", age: 83 },
+          ],
         };
 
         add = () => {
-          let { count } = this.state;
-          this.setState({ count: count + 1 });
-        };
-      }
-
-      class A extends React.Component {
-        state = { carName: "benz" };
-
-        changeCar = () => {
-          this.setState({ carName: "bmw" });
+          const { persons } = this.state;
+          const p = { id: persons.length + 1, name: "king", age: 20 };
+          this.setState({ persons: [p, ...persons] });
         };
 
         render() {
           return (
             <div>
-              <div>A!!!</div>
-              <button onClick={this.changeCar}>chan car</button>
-              <B carName={this.state.carName} />
+              <h2>show people</h2>
+              <button onClick={this.add}>add a king</button>
+              <ul>
+                {this.state.persons.map((person, index) => {
+                  return (
+                    <li key={index}>
+                      {person.name}--{person.age}
+                    </li>
+                  );
+                })}
+              </ul>
             </div>
           );
         }
       }
 
-      class B extends React.Component {
-        componentWillReceiveProps() {
-          console.log("B---componentWillReceiveProps");
-        }
-
-        render() {
-          return <div>B!!!!, ccar {this.props.carName}</div>;
-        }
-      }
-
-      ReactDOM.render(<A />, document.getElementById("test"));
+      ReactDOM.render(<Person />, document.getElementById("test"));
     </script>
   </body>
 </html>
