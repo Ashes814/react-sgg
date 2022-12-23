@@ -13,12 +13,15 @@
     <div id="test3"></div>
 
     <!-- import react core -->
-    <script type="text/javascript" src="js/react.development.js"></script>
+    <script type="text/javascript" src="newjs/react.development.js"></script>
     <!-- import react-dom, for supporting react to manipulate Dom -->
-    <script type="text/javascript" src="js/react-dom.development.js"></script>
-    <script type="text/javascript" src="js/prop-types.js"></script>
+    <script
+      type="text/javascript"
+      src="newjs/react-dom.development.js"
+    ></script>
+    <script type="text/javascript" src="newjs/prop-types.js"></script>
     <!-- import balel transfer jsx to js -->
-    <script type="text/javascript" src="js/babel.min.js"></script>
+    <script type="text/javascript" src="newjs/babel.min.js"></script>
 
     <script type="text/babel">
       class Count extends React.Component {
@@ -64,6 +67,7 @@
               <h2>sum:{this.state.count}</h2>
               <button onClick={this.add}>+1</button>
               <button onClick={this.death}>go die</button>
+              <button onClick={this.force}>FORCE update</button>
             </div>
           );
         }
@@ -72,12 +76,45 @@
           ReactDOM.unmountComponentAtNode(document.getElementById("test"));
         };
 
+        force = () => {
+          this.forceUpdate();
+        };
+
         add = () => {
           let { count } = this.state;
           this.setState({ count: count + 1 });
         };
       }
-      ReactDOM.render(<Count />, document.getElementById("test"));
+
+      class A extends React.Component {
+        state = { carName: "benz" };
+
+        changeCar = () => {
+          this.setState({ carName: "bmw" });
+        };
+
+        render() {
+          return (
+            <div>
+              <div>A!!!</div>
+              <button onClick={this.changeCar}>chan car</button>
+              <B carName={this.state.carName} />
+            </div>
+          );
+        }
+      }
+
+      class B extends React.Component {
+        componentWillReceiveProps() {
+          console.log("B---componentWillReceiveProps");
+        }
+
+        render() {
+          return <div>B!!!!, ccar {this.props.carName}</div>;
+        }
+      }
+
+      ReactDOM.render(<A />, document.getElementById("test"));
     </script>
   </body>
 </html>
