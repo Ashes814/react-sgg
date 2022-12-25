@@ -12,8 +12,15 @@ export default class Item extends Component {
 
   handleCheck = (id) => {
     return (event) => {
-      console.log(id, event.target.checked);
+      this.props.updateTodos(id, event.target.checked);
     };
+  };
+
+  handleDelete = (id) => {
+    if (window.confirm("sure?")) {
+      const { deleteTodo } = this.props;
+      deleteTodo(id);
+    }
   };
 
   render() {
@@ -29,12 +36,13 @@ export default class Item extends Component {
         <label>
           <input
             type="checkbox"
-            defaultChecked={done}
+            checked={done}
             onChange={this.handleCheck(id)}
           />
           <span>{name}</span>
         </label>
         <button
+          onClick={() => this.handleDelete(id)}
           className="btn btn-danger"
           style={{ display: mouse ? "block" : "none" }}
         >
