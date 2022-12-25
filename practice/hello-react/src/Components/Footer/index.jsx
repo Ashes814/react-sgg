@@ -6,6 +6,9 @@ export default class Footer extends Component {
     this.props.checkAllTodo(event.target.checked);
   };
 
+  handleAllDone = () => {
+    this.props.clearAllDone();
+  };
   render() {
     const { todos } = this.props;
 
@@ -20,14 +23,18 @@ export default class Footer extends Component {
         <label>
           <input
             type="checkbox"
-            checked={doneCount === totalCount ? true : false}
+            checked={
+              doneCount === totalCount && totalCount !== 0 ? true : false
+            }
             onChange={this.handleCheckAll}
           />
         </label>
         <span>
           <span>已完成{doneCount}</span> / 全部{totalCount}
         </span>
-        <button className="btn btn-danger">清除已完成任务</button>
+        <button onClick={this.handleAllDone} className="btn btn-danger">
+          清除已完成任务
+        </button>
       </div>
     );
   }
