@@ -7,16 +7,26 @@ export default class Search extends Component {
     const {
       keyWordElement: { value: keyword },
     } = this;
-    // console.log(value);
+    //发送请求前通知App更新状态
+    this.props.updateAppState({ isFirst: false, isLoading: true });
 
     // 发送网络请求
     axios.get(`http://localhost:3000/api1/search/users?q=${keyword}`).then(
       (response) => {
-        console.log(response);
-        this.props.saveUsers(response.data.items);
+        //请求成功后通知app更新状态
+
+        this.props.updateAppState({
+          err: "",
+          isLoading: false,
+          users: response.data.items,
+        });
       },
-      (err) => {
-        console.warn(err);
+      (error) => {
+        //请求失败后通知app更新状态
+        this.props.updateAppState({
+          isLoading: false,
+          err: error.message,
+        });
       }
     );
   };
