@@ -1,31 +1,56 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
-import Item from "../Item";
 import "./index.css";
 
 export default class List extends Component {
-  static propTypes = {
-    todos: PropTypes.array.isRequired,
-    updateTodos: PropTypes.func.isRequired,
-    deleteTodo: PropTypes.func.isRequired,
-  };
-
   render() {
-    const { todos, updateTodos, deleteTodo } = this.props;
-
     return (
-      <ul className="todo-main">
-        {todos.map((todo) => {
-          return (
-            <Item
-              key={todo.id}
-              {...todo}
-              updateTodos={updateTodos}
-              deleteTodo={deleteTodo}
+      <div className="row">
+        <div className="card">
+          <a href="https://github.com/reactjs" target="_blank">
+            <img
+              src="https://avatars.githubusercontent.com/u/6412038?v=3"
+              style={{ width: "100px" }}
             />
-          );
-        })}
-      </ul>
+          </a>
+          <p className="card-text">reactjs</p>
+        </div>
+        <div className="card">
+          <a href="https://github.com/reactjs" target="_blank">
+            <img
+              src="https://avatars.githubusercontent.com/u/6412038?v=3"
+              style={{ width: "100px" }}
+            />
+          </a>
+          <p className="card-text">reactjs</p>
+        </div>
+        <div className="card">
+          <a href="https://github.com/reactjs" target="_blank">
+            <img
+              src="https://avatars.githubusercontent.com/u/6412038?v=3"
+              style={{ width: "100px" }}
+            />
+          </a>
+          <p className="card-text">reactjs</p>
+        </div>
+        <div className="card">
+          <a href="https://github.com/reactjs" target="_blank">
+            <img
+              src="https://avatars.githubusercontent.com/u/6412038?v=3"
+              style={{ width: "100px" }}
+            />
+          </a>
+          <p className="card-text">reactjs</p>
+        </div>
+        <div className="card">
+          <a href="https://github.com/reactjs" target="_blank">
+            <img
+              src="https://avatars.githubusercontent.com/u/6412038?v=3"
+              style={{ width: "100px" }}
+            />
+          </a>
+          <p className="card-text">reactjs</p>
+        </div>
+      </div>
     );
   }
 }
