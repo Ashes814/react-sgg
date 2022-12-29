@@ -1,15 +1,24 @@
 import React, { Component } from "react";
+import axios from "axios";
 
 export default class Search extends Component {
   search = () => {
     // 获取用户输入
     const {
-      keyWordElement: { value },
+      keyWordElement: { value: keyword },
     } = this;
-    console.log(value);
+    // console.log(value);
 
     // 发送网络请求
-    axios.
+    axios.get(`http://localhost:3000/api1/search/users?q=${keyword}`).then(
+      (response) => {
+        console.log(response);
+        this.props.saveUsers(response.data.items);
+      },
+      (err) => {
+        console.warn(err);
+      }
+    );
   };
 
   render() {
