@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { NavLink, Route } from "react-router-dom";
+import { Route } from "react-router-dom";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Header from "./components/Header";
@@ -29,8 +29,8 @@ export default class App extends Component {
               </a> */}
               {/* react中， 靠路由链接切换组件 */}
 
-              <MyNavLink to="/about" title="About" />
-              <MyNavLink to="/home" title="Home" />
+              <MyNavLink to="/about">About</MyNavLink>
+              <MyNavLink to="/home">Home</MyNavLink>
             </div>
           </div>
           <div className="col-xs-6">
