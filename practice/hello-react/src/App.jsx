@@ -4,7 +4,7 @@ import Home from "./pages/Home";
 import About from "./pages/About";
 import Header from "./components/Header";
 import MyNavLink from "./components/MyNavLink";
-import Test from "./components/Test";
+// import Test from "./components/Test";
 
 export default class App extends Component {
   render() {
@@ -30,8 +30,8 @@ export default class App extends Component {
               </a> */}
               {/* react中， 靠路由链接切换组件 */}
 
-              <MyNavLink to="/about">About</MyNavLink>
-              <MyNavLink to="/home">Home</MyNavLink>
+              <MyNavLink to="/test/about">About</MyNavLink>
+              <MyNavLink to="/test/home">Home</MyNavLink>
             </div>
           </div>
           <div className="col-xs-6">
@@ -39,9 +39,8 @@ export default class App extends Component {
               <div className="panel-body">
                 {/* 注册路由（编写路由链接） */}
                 <Switch>
-                  <Route path="/about" component={About}></Route>
-                  <Route path="/home" component={Home}></Route>
-                  <Route path="/home" component={Test}></Route>
+                  <Route path="/test/about" component={About}></Route>
+                  <Route path="/test/home" component={Home}></Route>
                 </Switch>
               </div>
             </div>
