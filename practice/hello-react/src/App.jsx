@@ -1,9 +1,10 @@
 import React, { Component } from "react";
-import { Route } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Header from "./components/Header";
 import MyNavLink from "./components/MyNavLink";
+import Test from "./components/Test";
 
 export default class App extends Component {
   render() {
@@ -37,9 +38,11 @@ export default class App extends Component {
             <div className="panel">
               <div className="panel-body">
                 {/* 注册路由（编写路由链接） */}
-
-                <Route path="/about" component={About}></Route>
-                <Route path="/home" component={Home}></Route>
+                <Switch>
+                  <Route path="/about" component={About}></Route>
+                  <Route path="/home" component={Home}></Route>
+                  <Route path="/home" component={Test}></Route>
+                </Switch>
               </div>
             </div>
           </div>
