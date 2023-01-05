@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, Redirect } from "react-router-dom";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Header from "./components/Header";
@@ -41,6 +41,7 @@ export default class App extends Component {
                 <Switch>
                   <Route path="/test/about" component={About}></Route>
                   <Route path="/test/home" component={Home}></Route>
+                  <Redirect to="/home" />
                 </Switch>
               </div>
             </div>
