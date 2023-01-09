@@ -30,8 +30,8 @@ export default class App extends Component {
               </a> */}
               {/* react中， 靠路由链接切换组件 */}
 
-              <MyNavLink to="/test/about">About</MyNavLink>
-              <MyNavLink to="/test/home">Home</MyNavLink>
+              <MyNavLink to="/about">About</MyNavLink>
+              <MyNavLink to="/home">Home</MyNavLink>
             </div>
           </div>
           <div className="col-xs-6">
@@ -39,9 +39,9 @@ export default class App extends Component {
               <div className="panel-body">
                 {/* 注册路由（编写路由链接） */}
                 <Switch>
-                  <Route path="/test/about" component={About}></Route>
-                  <Route path="/test/home" component={Home}></Route>
-                  <Redirect to="/home" />
+                  <Route path="/about" component={About}></Route>
+                  <Route path="/home" component={Home}></Route>
+                  <Redirect to="/about" />
                 </Switch>
               </div>
             </div>
