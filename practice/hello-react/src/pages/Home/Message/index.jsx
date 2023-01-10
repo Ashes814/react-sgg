@@ -18,8 +18,10 @@ export default class Message extends Component {
           {messageArr.map((msgObj) => {
             return (
               <li key={msgObj.id}>
-                {/* 向路由组件传递params参数 */}
-                <Link to={`/home/message/detail/${msgObj.id}/${msgObj.title}`}>
+                {/* 向路由组件传递search参数 */}
+                <Link
+                  to={`/home/message/detail/?id=${msgObj.id}&title=${msgObj.title}`}
+                >
                   {msgObj.title}
                 </Link>
               </li>
@@ -27,8 +29,8 @@ export default class Message extends Component {
           })}
         </ul>
         <hr />
-        {/* 声明接收params参数 */}
-        <Route path="/home/message/detail/:id/:title" component={Detail} />
+        {/* search参数无需声明接收 */}
+        <Route path="/home/message/detail" component={Detail} />
       </div>
     );
   }
