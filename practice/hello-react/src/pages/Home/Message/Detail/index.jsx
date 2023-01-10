@@ -11,7 +11,8 @@ export default class Detail extends Component {
   render() {
     // const { id, title } = this.props.match.params;
     // console.log(qs.parse(this.props.location.search.slice(1)));
-    const { id, title } = qs.parse(this.props.location.search.slice(1));
+    // console.log(this.props);
+    const { id, title } = this.props.location.state;
     const findResult = Details.find((detailObj) => {
       return detailObj.id === id;
     });
