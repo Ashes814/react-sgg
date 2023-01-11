@@ -20,6 +20,7 @@ export default class Message extends Component {
               <li key={msgObj.id}>
                 {/* 向路由组件传递state参数 */}
                 <Link
+                  replace={true}
                   to={{
                     pathname: "/home/message/detail/",
                     state: { id: msgObj.id, title: msgObj.title },
