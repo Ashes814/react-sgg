@@ -12,7 +12,7 @@ export default class Detail extends Component {
     // const { id, title } = this.props.match.params;
     // console.log(qs.parse(this.props.location.search.slice(1)));
     // console.log(this.props);
-    const { id, title } = this.props.location.state || {};
+    const { id, title } = this.props.match.params;
     const findResult =
       Details.find((detailObj) => {
         return detailObj.id === id;
