@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Count from "./components/Count";
 // import { Button, Space } from "antd";
 
 // import { GithubOutlined } from "@ant-design/icons";
@@ -11,6 +12,10 @@ import React, { Component } from "react";
 
 export default class App extends Component {
   render() {
-    return <div></div>;
+    return (
+      <div>
+        <Count />
+      </div>
+    );
   }
 }
