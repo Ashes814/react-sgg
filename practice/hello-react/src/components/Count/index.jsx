@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import store from "../../redux/store";
 
 export default class Count extends Component {
   state = {
@@ -8,7 +9,7 @@ export default class Count extends Component {
   increment = () => {
     const { value } = this.selectedNumber;
     const { count } = this.state;
-    this.setState({ count: count + value * 1 });
+    // this.setState({ count: count + value * 1 });
   };
   decrement = () => {
     const { value } = this.selectedNumber;
@@ -31,7 +32,7 @@ export default class Count extends Component {
   render() {
     return (
       <div>
-        <h1>Current Sum: {this.state.count}</h1>
+        <h1>Current Sum: {store.getState()}</h1>
         <select
           ref={(c) => {
             this.selectedNumber = c;
