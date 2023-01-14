@@ -3,30 +3,39 @@ import store from "../../redux/store";
 
 export default class Count extends Component {
   state = {
-    count: 0,
+    c: 0,
   };
+
+  componentDidMount() {
+    store.subscribe(() => {
+      this.setState({});
+    });
+  }
 
   increment = () => {
     const { value } = this.selectedNumber;
-    const { count } = this.state;
+    // const { count } = this.state;
     // this.setState({ count: count + value * 1 });
+    store.dispatch({ type: "increment", data: value * 1 });
   };
   decrement = () => {
     const { value } = this.selectedNumber;
-    const { count } = this.state;
-    this.setState({ count: count - value * 1 });
+    store.dispatch({ type: "decrement", data: value * 1 });
   };
   oddIncrement = () => {
     const { value } = this.selectedNumber;
-    const { count } = this.state;
-    if (count % 2 !== 0) {
-      this.setState({ count: count + value * 1 });
+    // const { count } = this.state;
+    if (store.getState() % 2 !== 0) {
+      store.dispatch({ type: "increment", data: value * 1 });
     }
   };
   asyncIncrement = () => {
     const { value } = this.selectedNumber;
-    const { count } = this.state;
-    setTimeout(() => this.setState({ count: count + value * 1 }), 500);
+    const { count } = store.getState();
+    setTimeout(
+      () => store.dispatch({ type: "increment", data: value * 1 }),
+      500
+    );
   };
 
   render() {
