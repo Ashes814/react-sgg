@@ -13,23 +13,26 @@ export default class Count extends Component {
 
   increment = () => {
     const { value } = this.selectedNumber;
+    this.props.jia(value * 1);
     // const { count } = this.state;
     // this.setState({ count: count + value * 1 });
     // store.dispatch(createIncrementAction(value * 1));
   };
   decrement = () => {
     const { value } = this.selectedNumber;
+    this.props.jian(value * 1);
     // store.dispatch(createDecrementAction(value * 1));
   };
   oddIncrement = () => {
     const { value } = this.selectedNumber;
     // const { count } = this.state;
-    // if (store.getState() % 2 !== 0) {
-    //   store.dispatch(createIncrementAction(value * 1));
-    // }
+    if (this.props.count % 2 !== 0) {
+      this.props.jia(value * 1);
+    }
   };
   asyncIncrement = () => {
     const { value } = this.selectedNumber;
+    this.props.asyncJia(value * 1, 500);
     // const { count } = store.getState();
     // store.dispatch(createIncrementAsyncAction(value * 1, 500));
   };
@@ -37,7 +40,7 @@ export default class Count extends Component {
   render() {
     return (
       <div>
-        <h1>Current Sum: ?</h1>
+        <h1>Current Sum: {this.props.count}</h1>
         <select
           ref={(c) => {
             this.selectedNumber = c;
