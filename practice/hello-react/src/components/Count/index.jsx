@@ -37,7 +37,7 @@ export default class Count extends Component {
   render() {
     return (
       <div>
-        <h1>Current Sum: {store.getState()}</h1>
+        <h1>Current Sum: ?</h1>
         <select
           ref={(c) => {
             this.selectedNumber = c;
