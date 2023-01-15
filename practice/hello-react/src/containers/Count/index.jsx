@@ -1,33 +1,66 @@
-import CountUI from "../../components/Count";
-// import store from "../../redux/store";
 import { connect } from "react-redux";
 import {
   createIncrementAction,
   createDecrementAction,
   createIncrementAsyncAction,
 } from "../../redux/count_action";
+import React, { Component } from "react";
+
+class Count extends Component {
+  state = {
+    c: 0,
+  };
+
+  increment = () => {
+    const { value } = this.selectedNumber;
+    this.props.jia(value * 1);
+  };
+  decrement = () => {
+    const { value } = this.selectedNumber;
+    this.props.jian(value * 1);
+  };
+  oddIncrement = () => {
+    const { value } = this.selectedNumber;
+    if (this.props.count % 2 !== 0) {
+      this.props.jia(value * 1);
+    }
+  };
+  asyncIncrement = () => {
+    const { value } = this.selectedNumber;
+    this.props.asyncJia(value * 1, 500);
+  };
+
+  render() {
+    return (
+      <div>
+        <h1>Current Sum: {this.props.count}</h1>
+        <select
+          ref={(c) => {
+            this.selectedNumber = c;
+          }}
+        >
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+        </select>
+        <button onClick={this.increment}>+</button>
+        <button onClick={this.decrement}>-</button>
+        <button onClick={this.oddIncrement}>odd +</button>
+        <button onClick={this.asyncIncrement}>async +</button>
+      </div>
+    );
+  }
+}
+
+// export container
 
 const mapStateToProps = (state) => {
   return { count: state };
 };
-
-// const mapDispatchToProps = (dispatch) => {
-//   return {
-//     jia: (number) => {
-//       dispatch(createIncrementAction(number));
-//     },
-//     jian: (number) => {
-//       dispatch(createDecrementAction(number));
-//     },
-//     asyncJia: (number, time) => {
-//       dispatch(createIncrementAsyncAction(number, time));
-//     },
-//   };
-// }
 const mapDispatchToProps = {
   jia: createIncrementAction,
   jian: createDecrementAction,
   asyncJia: createIncrementAsyncAction,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(CountUI);
+export default connect(mapStateToProps, mapDispatchToProps)(Count);
