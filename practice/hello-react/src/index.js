@@ -1,12 +1,20 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import store from "./redux/store";
+import { Provider } from "react-redux";
 
 // import { BrowserRouter } from "react-router-dom";
 import App from "./App";
-import store from "./redux/store";
+// import store from "./redux/store";
 
-ReactDOM.render(<App />, document.getElementById("root"));
+ReactDOM.render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
 
-store.subscribe(() => {
-  ReactDOM.render(<App />, document.getElementById("root"));
-});
+  document.getElementById("root")
+);
+
+// store.subscribe(() => {
+//   ReactDOM.render(<App />, document.getElementById("root"));
+// });
