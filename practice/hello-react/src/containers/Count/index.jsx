@@ -3,7 +3,7 @@ import {
   createIncrementAction,
   createDecrementAction,
   createIncrementAsyncAction,
-} from "../../redux/count_action";
+} from "../../redux/actions/count";
 import React, { Component } from "react";
 
 class Count extends Component {
@@ -33,7 +33,9 @@ class Count extends Component {
   render() {
     return (
       <div>
-        <h1>Current Sum: {this.props.count}</h1>
+        <h2>I am Count</h2>
+        <h4>Current Sum: {this.props.count}</h4>
+
         <select
           ref={(c) => {
             this.selectedNumber = c;
