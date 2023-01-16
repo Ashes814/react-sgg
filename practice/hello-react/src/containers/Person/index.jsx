@@ -15,7 +15,7 @@ class Person extends Component {
   render() {
     return (
       <div>
-        <h2>I am Person</h2>
+        <h2>I am Person Count is {this.props.he}</h2>
         <input
           ref={(c) => (this.nameNode = c)}
           type="text"
@@ -41,6 +41,6 @@ class Person extends Component {
   }
 }
 
-export default connect((state) => ({ yiduiren: state.rens }), {
+export default connect((state) => ({ yiduiren: state.rens, he: state.he }), {
   jiaren: createAddPersonAction,
 })(Person);
