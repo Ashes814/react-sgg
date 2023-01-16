@@ -57,7 +57,7 @@ class Count extends Component {
 // export container
 
 const mapStateToProps = (state) => {
-  return { count: state };
+  return { count: state.he };
 };
 const mapDispatchToProps = {
   jia: createIncrementAction,
