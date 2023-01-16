@@ -15,7 +15,7 @@ class Person extends Component {
   render() {
     return (
       <div>
-        <h2>I am Person Count is {this.props.he}</h2>
+        <h2>I am Person Count is {this.props.count}</h2>
         <input
           ref={(c) => (this.nameNode = c)}
           type="text"
@@ -28,7 +28,7 @@ class Person extends Component {
         />
         <button onClick={this.addPerson}>Add</button>
         <ul>
-          {this.props.yiduiren.map((ren) => {
+          {this.props.personArr.map((ren) => {
             return (
               <li key={ren.id}>
                 name: {ren.name}--age:{ren.age}
@@ -41,6 +41,9 @@ class Person extends Component {
   }
 }
 
-export default connect((state) => ({ yiduiren: state.rens, he: state.he }), {
-  jiaren: createAddPersonAction,
-})(Person);
+export default connect(
+  (state) => ({ personArr: state.persons, count: state.count }),
+  {
+    jiaren: createAddPersonAction,
+  }
+)(Person);

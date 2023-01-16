@@ -36,7 +36,7 @@ class Count extends Component {
         <h2>I am Count</h2>
         <h4>
           Current Sum: {this.props.count} Number of Person is{" "}
-          {this.props.renshu}
+          {this.props.personsArr}
         </h4>
 
         <select
@@ -60,7 +60,7 @@ class Count extends Component {
 // export container
 
 const mapStateToProps = (state) => {
-  return { count: state.he, renshu: state.rens.length };
+  return { count: state.count, personsArr: state.persons.length };
 };
 const mapDispatchToProps = {
   jia: createIncrementAction,
