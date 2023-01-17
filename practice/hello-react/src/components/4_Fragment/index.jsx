@@ -1,11 +1,11 @@
 import React, { Component, Fragment } from "react";
-import Demo from "./components/4_Fragment";
 
-export default class App extends Component {
+export default class Demo extends Component {
   render() {
     return (
       <Fragment>
-        <Demo />
+        <h1>1</h1>
+        <h1>2</h1>
       </Fragment>
     );
   }
