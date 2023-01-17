@@ -18,7 +18,7 @@ export default [
       {
         path: "message",
         element: <Message />,
-        children: [{ path: "detail", element: <Detail /> }],
+        children: [{ path: "detail/:id/:title/:content", element: <Detail /> }],
       },
       { path: "news", element: <News /> },
     ],

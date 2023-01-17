@@ -16,7 +16,7 @@ export default function Message() {
             <li key={message.id}>
               {/* 路由链接 */}
               <Link
-                to={`detail?id=${message.id}&title=${message.title}&content=${message.content}`}
+                to={`detail/${message.id}/${message.title}/${message.content}`}
               >
                 Message:{message.title}
               </Link>
