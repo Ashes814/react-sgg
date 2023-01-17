@@ -1,14 +1,12 @@
 import React from "react";
-import { NavLink, useRoutes } from "react-router-dom";
-import routes from "./routes";
+import { NavLink, Routes, Route, Navigate } from "react-router-dom";
+import Home from "./pages/Home";
+import About from "./pages/About";
 
 export default function App() {
   function computedClassName({ isActive }) {
     return isActive ? "list-group-item atguigu" : "list-group-item";
   }
-
-  // 根据路由表生成对应的路由规则
-  const element = useRoutes(routes);
   return (
     <div>
       <div className="row">
@@ -33,7 +31,11 @@ export default function App() {
           <div className="panel">
             <div className="panel-body">
               {/* 注册路由 */}
-              {element}
+              <Routes>
+                <Route path="/about" element={<About />} />
+                <Route path="/home" element={<Home />} />
+                <Route path="/" element={<Navigate to="/about" />} />
+              </Routes>
             </div>
           </div>
         </div>
