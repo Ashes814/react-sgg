@@ -1,16 +1,13 @@
 import React from "react";
-import { useSearchParams } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 export default function Detail() {
-  const [search, setSearch] = useSearchParams();
-  const id = search.get("id");
-  const title = search.get("title");
-  const content = search.get("content");
+  const {
+    state: { id, title, content },
+  } = useLocation();
+  console.log(useLocation());
   return (
     <div>
-      <button onClick={() => setSearch("id=008&title=haha&content=xixi")}>
-        update
-      </button>
       <ul>
         <li>{id}</li>
         <li>{title}</li>
