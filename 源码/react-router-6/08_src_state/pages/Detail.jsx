@@ -5,6 +5,7 @@ export default function Detail() {
   const {
     state: { id, title, content },
   } = useLocation();
+  console.log(useLocation());
   return (
     <div>
       <ul>
