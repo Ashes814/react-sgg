@@ -13,28 +13,10 @@
       src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
       crossorigin
     ></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
   </head>
   <body>
-    <button id="btn">test</button>
     <div id="root"></div>
   </body>
-  <script>
-    /*
- React.createElement()
- - 用来创建一个React元素
-*/
-
-    // 创建一个React元素
-    const button = React.createElement(
-      "button",
-      { class: "hello", onClick: () => alert(123) },
-      "点我一下"
-    );
-
-    // 获取根元素
-    const root = ReactDOM.createRoot(document.getElementById("root"));
-
-    // 将元素在根元素中显示
-    root.render(button);
-  </script>
+  <script type="text/babel"></script>
 </html>
