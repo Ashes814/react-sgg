@@ -4,8 +4,6 @@ import "./LogItem.css";
 
 export default function LogItem(props) {
   const date = props.date;
-  // props is read only
-  // props.desc = 8848;    Error
 
   return (
     <div className="item">
