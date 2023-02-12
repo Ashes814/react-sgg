@@ -1,0 +1,11 @@
+.app {
+  width: 300px;
+  height: 200px;
+  background-color: #bfa;
+}
+
+.app > button {
+  width: 100px;
+  font-size: 50px;
+  margin: 0 20px;
+}
