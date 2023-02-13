@@ -21,7 +21,6 @@ export default function LogItem(props) {
 
   const confirmHandler = () => {
     props.deleteLogByIndex();
-    setShowConfirm(false);
   };
 
   const cancelHandler = () => {

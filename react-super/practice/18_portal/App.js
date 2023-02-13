@@ -8,8 +8,8 @@ import "./App.css";
 const App = () => {
   const initState = [
     { id: "001", date: new Date(), desc: "Learn 1", time: 40 },
-    { id: "002", date: new Date(2022, 3, 21), desc: "Learn 2", time: 50 },
-    { id: "003", date: new Date(2022, 3, 22), desc: "Learn 3", time: 60 },
+    { id: "002", date: new Date(), desc: "Learn 2", time: 50 },
+    { id: "003", date: new Date(), desc: "Learn 3", time: 60 },
     { id: "004", date: new Date(), desc: "Learn 4", time: 70 },
   ];
 
@@ -23,9 +23,10 @@ const App = () => {
   };
 
   // 定义一个函数，从数据中删除指定日志
-  const deleteLogById = (id) => {
+  const deleteLogByIndex = (index) => {
     setLogsData((prevState) => {
-      const newLogs = prevState.filter((item) => item.id !== id);
+      const newLogs = [...prevState];
+      newLogs.splice(index, 1);
       return newLogs;
     });
   };
@@ -37,7 +38,7 @@ const App = () => {
   return (
     <div className="app">
       <LogsForm onSaveLog={saveLogHandler} />
-      <Logs logsData={logsData} deleteLogById={deleteLogById} />
+      <Logs logsData={logsData} deleteLogByIndex={deleteLogByIndex} />
     </div>
   );
 };

@@ -1,0 +1,38 @@
+.item {
+  display: flex;
+  margin: 16px 0;
+  background-color: #fcbf49;
+  /* border-radius: 15px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); */
+  padding: 12px;
+  /* align-items: center; */
+  /* justify-content: left; */
+}
+.content {
+  flex: auto;
+  text-align: center;
+  font-weight: bold;
+}
+
+.desc {
+  color: 194b49;
+  font-size: 16px;
+}
+
+.time {
+  color: #d62828;
+}
+
+.delete {
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+  margin-right: 10px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.delete:hover {
+  color: #d62828;
+  transform: rotate(1turn);
+}
