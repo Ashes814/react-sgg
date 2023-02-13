@@ -1,0 +1,9 @@
+.p1 {
+  color: red;
+  background-color: #bfa;
+  border: red solid 1px;
+}
+
+.p1.blue-border {
+  border: blue solid 1px;
+}
