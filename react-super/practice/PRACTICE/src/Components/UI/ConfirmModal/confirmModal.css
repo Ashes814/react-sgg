@@ -1,0 +1,51 @@
+.confirmModal {
+  display: flex;
+  flex-flow: column;
+  width: 400px;
+  height: 200px;
+  background-color: #fff;
+  padding: 10px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  margin: auto;
+}
+
+.confirmText {
+  display: flex;
+  height: 150px;
+  justify-content: center;
+  align-items: center;
+  font-size: 22px;
+  color: red;
+}
+
+.confirmButton {
+  flex: auto;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.confirmButton > button {
+  width: 80px;
+  margin: 0 10px;
+  border: none;
+  /* color: white; */
+  padding: 5px;
+  font-weight: bold;
+  font-size: 16px;
+  background-color: #ea2;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.confirmButton > button:hover {
+  transform: scale(1.2);
+}
+
+.confirmButton > .confirm {
+  background-color: red;
+  color: white;
+}

@@ -1,7 +1,5 @@
 import Logs from "./Components/Logs/Logs";
 import Card from "./Components/UI/Card/Card";
-import ConfirmModal from "./Components/UI/ConfirmModal/confirmModal";
-// import BackDrop from "./Components/UI/BackDrop/BackDrop";
 import LogsForm from "./Components/LogsForm/LogsForm";
 import { useState, useRef } from "react";
 import "./App.css";
