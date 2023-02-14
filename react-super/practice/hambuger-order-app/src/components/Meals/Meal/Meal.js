@@ -1,4 +1,5 @@
 import React from "react";
+import Counter from "../../UI/Counter/Counter";
 import classes from "./Meal.module.css";
 
 export default function Meal() {
@@ -15,7 +16,8 @@ export default function Meal() {
         </p>
         <div className={classes.PriceWrapper}>
           <span className={classes.Price}>12</span>
-          <div>数量+</div>
+
+          <Counter amount={0} />
         </div>
       </div>
     </div>
