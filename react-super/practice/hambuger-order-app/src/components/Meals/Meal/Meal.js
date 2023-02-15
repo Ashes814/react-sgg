@@ -15,11 +15,7 @@ export default function Meal(props) {
         <div className={classes.PriceWrapper}>
           <span className={classes.Price}>{props.meal.price}</span>
 
-          <Counter
-            meal={props.meal}
-            addMealHandler={props.addMealHandler}
-            onSub={props.onSub}
-          />
+          <Counter meal={props.meal} />
         </div>
       </div>
     </div>

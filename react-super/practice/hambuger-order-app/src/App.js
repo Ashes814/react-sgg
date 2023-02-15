@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Meals from "./components/Meals/Meals";
+import CartContext from "./store/cart-context";
 import "./App.css";
 
 // 模拟一组事物数据
@@ -66,7 +67,6 @@ function App() {
 
   // 向购物车中添加商品
   const addMealHandler = (meal) => {
-    debugger;
     const newCart = { ...cartData };
 
     if (newCart.items.indexOf(meal) === -1) {
@@ -103,13 +103,17 @@ function App() {
     setCartData(newCart);
   };
   return (
-    <div className="App">
-      <Meals
-        mealsData={mealsData}
-        addMealHandler={addMealHandler}
-        onSub={subMealHandler}
-      />
-    </div>
+    <CartContext.Provider
+      value={{ ...cartData, addMealHandler, subMealHandler }}
+    >
+      <div className="App">
+        <Meals
+          mealsData={mealsData}
+          addMealHandler={addMealHandler}
+          onSub={subMealHandler}
+        />
+      </div>
+    </CartContext.Provider>
   );
 }
 
