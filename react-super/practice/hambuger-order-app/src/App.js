@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import Meals from "./components/Meals/Meals";
-import CartContext from "./store/cart-context";
-import "./App.css";
 
+import CartContext from "./store/cart-context";
+
+import "./App.css";
+import FilterMeals from "./components/FilterMeals/FilterMeals";
+import Cart from "./components/Cart/Cart";
 // 模拟一组事物数据
 const MEALS_DATA = [
   {
@@ -47,6 +50,27 @@ const MEALS_DATA = [
     price: 12,
     img: "img/meals/6.jpg",
   },
+  {
+    id: "7",
+    title: "汉堡包7",
+    desc: "100% lorem lorem lorem lorem",
+    price: 12,
+    img: "img/meals/6.jpg",
+  },
+  {
+    id: "8",
+    title: "汉堡包8",
+    desc: "100% lorem lorem lorem lorem",
+    price: 12,
+    img: "img/meals/6.jpg",
+  },
+  {
+    id: "9",
+    title: "汉堡包9",
+    desc: "100% lorem lorem lorem lorem",
+    price: 12,
+    img: "img/meals/6.jpg",
+  },
 ];
 
 function App() {
@@ -64,6 +88,14 @@ function App() {
     totalAmount: 0,
     totalPrice: 0,
   });
+
+  // 创建一个过滤meals的函数
+  const filterHandler = (keyword) => {
+    const newMealsData = MEALS_DATA.filter(
+      (item) => item.title.indexOf(keyword) !== -1
+    );
+    setMealsData(newMealsData);
+  };
 
   // 向购物车中添加商品
   const addMealHandler = (meal) => {
@@ -107,11 +139,13 @@ function App() {
       value={{ ...cartData, addMealHandler, subMealHandler }}
     >
       <div className="App">
+        <FilterMeals onFilter={filterHandler} />
         <Meals
           mealsData={mealsData}
           addMealHandler={addMealHandler}
           onSub={subMealHandler}
         />
+        <Cart />
       </div>
     </CartContext.Provider>
   );
