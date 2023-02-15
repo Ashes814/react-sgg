@@ -11,7 +11,10 @@ export default function Meal(props) {
 
       <div className={classes.TextContainer}>
         <h2 className={classes.Title}>{props.meal.title}</h2>
-        <p className={classes.Desc}>{props.meal.desc}</p>
+        {props.noDesc ? null : (
+          <p className={classes.Desc}>{props.meal.desc}</p>
+        )}
+
         <div className={classes.PriceWrapper}>
           <span className={classes.Price}>{props.meal.price}</span>
 
