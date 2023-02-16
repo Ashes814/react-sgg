@@ -6,7 +6,7 @@ const backdropRoot = document.getElementById("backdrop-root");
 
 export default function BackDrop(props) {
   return ReactDOM.createPortal(
-    <div className={`${classes.Backdrop} ${props.className}`}>
+    <div {...props} className={`${classes.Backdrop} ${props.className}`}>
       {props.children}
     </div>,
     backdropRoot

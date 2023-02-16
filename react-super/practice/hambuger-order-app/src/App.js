@@ -6,6 +6,7 @@ import CartContext from "./store/cart-context";
 import "./App.css";
 import FilterMeals from "./components/FilterMeals/FilterMeals";
 import Cart from "./components/Cart/Cart";
+import Confirm from "./components/UI/Confirm/Confirm";
 // 模拟一组事物数据
 const MEALS_DATA = [
   {
@@ -134,10 +135,22 @@ function App() {
 
     setCartData(newCart);
   };
+
+  const clearCart = () => {
+    const newCart = { ...cartData };
+
+    newCart.items.forEach((item) => delete item.amount);
+    newCart.items = [];
+    newCart.totalAmount = 0;
+    newCart.totalPrice = 0;
+
+    setCartData(newCart);
+  };
   return (
     <CartContext.Provider
-      value={{ ...cartData, addMealHandler, subMealHandler }}
+      value={{ ...cartData, addMealHandler, subMealHandler, clearCart }}
     >
+      {/* <Confirm /> */}
       <div className="App">
         <FilterMeals onFilter={filterHandler} />
         <Meals
