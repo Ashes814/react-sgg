@@ -10,12 +10,12 @@ const CartDetails = () => {
   const ctx = useContext(CartContext);
   return (
     <BackDrop>
-      <div className={classes.CartDetails}>
+      <div className={classes.CartDetails} onClick={(e) => e.stopPropagation()}>
         <header className={classes.Header}>
           <h2 className={classes.Title}>餐品详情</h2>
           <div className={classes.Clear}>
             <FontAwesomeIcon icon={faTrash} />
-            <span>清空购物车</span>
+            <span onClick={}>清空购物车</span>
           </div>
         </header>
 

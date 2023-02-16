@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import classes from "./Cart.module.css";
 import IconImg from "../../asset/img/Bag.png";
 import CartContext from "../../store/cart-context";
@@ -6,10 +6,20 @@ import CartDetails from "./CartDetails/CartDetails";
 
 export default function Cart() {
   const ctx = useContext(CartContext);
+
+  // 添加一个state来设置详情是否显示
+  const [showDetails, setShowDetails] = useState(false);
+
+  // 添加一个显示详情页的函数
+  const toggleDetailsHandler = () => {
+    if (ctx.totalAmount === 0) return;
+    setShowDetails((preState) => !preState);
+  };
   return (
-    <div className={classes.Cart}>
+    <div className={classes.Cart} onClick={toggleDetailsHandler}>
       {/* 引入购物车的详情 */}
-      <CartDetails />
+      {showDetails && <CartDetails />}
+
       <div className={classes.Icon}>
         <img src={IconImg} alt="bag pic" />
         {ctx.totalAmount === 0 ? null : (
